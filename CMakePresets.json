@@ -1,0 +1,56 @@
+{
+    "version": 8,
+    "configurePresets": [
+        {
+            "name": "debug",
+            "displayName": "Debug Preset",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+
+                "SPNG_SHARED": "OFF",
+                "BUILD_EXAMPLES": "OFF"
+            }
+        },
+        {
+            "name": "fast",
+            "displayName": "Release Preset with optimisation flags",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "SPNG_SHARED": "OFF",
+                "BUILD_EXAMPLES": "OFF",
+                "CMAKE_C_FLAGS": "-march=native",
+                "CMAKE_CXX_FLAGS": "-march=native",
+                "CMAKE_INTERPROCEDURAL_OPTIMIZATION": "ON"
+            }
+        },
+        {
+            "name": "debug-unoptimised",
+            "displayName": "Debug Preset with -O0, for better gdb experience",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+
+                "SPNG_SHARED": "OFF",
+                "BUILD_EXAMPLES": "OFF",
+                "CMAKE_C_FLAGS": "-O0 -Wno-error=cpp",
+                "CMAKE_CXX_FLAGS": "-O0 -Wno-error=cpp"
+            }
+        },
+        {
+            "name": "fast-without-lto",
+            "displayName": "Release Preset with optimisation flags but without lto",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "SPNG_SHARED": "OFF",
+                "BUILD_EXAMPLES": "OFF",
+                "CMAKE_C_FLAGS": "-march=native",
+                "CMAKE_CXX_FLAGS": "-march=native"
+            }
+        }
+    ]
+}
